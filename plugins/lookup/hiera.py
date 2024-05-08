@@ -73,11 +73,11 @@ class Hiera(object):
 
     def get(self, hiera_key):
         pargs = [self.hiera_bin]
-        pargs.extend(['-c', self.hiera_cfg])
+        pargs.extend(['--config', self.hiera_cfg])
 
         pargs.extend(hiera_key)
 
-        rc, output, err = run_cmd("{0} -c {1} {2}".format(
+        rc, output, err = run_cmd("{0} --config {1} {2}".format(
             self.hiera_bin, self.hiera_cfg, hiera_key[0]))
 
         return to_text(output.strip())
